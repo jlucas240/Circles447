@@ -51,6 +51,29 @@ class mainPage extends Component {
     }
   };
 
+  handleSupermarketsCheckboxChange = event =>
+    this.setState({ checked: event.target.checked });
+  handleSchoolsCheckboxChange = event =>
+    this.setState({ checked: event.target.checked });
+  handleChurchesCheckboxChange = event =>
+    this.setState({ checked: event.target.checked });
+  handleCommunityCheckboxChange = event =>
+    this.setState({ checked: event.target.checked });
+  handleLibrariesCheckboxChange = event =>
+    this.setState({ checked: event.target.checked });
+  handleCafeCheckboxChange = event =>
+    this.setState({ checked: event.target.checked });
+  handleDanceCheckboxChange = event =>
+    this.setState({ checked: event.target.checked });
+  handleGymsCheckboxChange = event =>
+    this.setState({ checked: event.target.checked });
+  handleSwimmingCheckboxChange = event =>
+    this.setState({ checked: event.target.checked });
+  handlePlaygroundsCheckboxChange = event =>
+    this.setState({ checked: event.target.checked });
+  handleParksCheckboxChange = event =>
+    this.setState({ checked: event.target.checked });
+
   clicked_baby = () => {
     this.setState({
       optionsstyle: {
@@ -188,23 +211,83 @@ class mainPage extends Component {
             </div>
             options: <br></br>
             <div>
-              <input type="checkbox"></input>
-              Church
+              <input
+                type="checkbox"
+                style={this.checkboxStyle}
+                checked={this.state.checked}
+                onChange={this.handleCheckboxChange}
+              />
+              Supermarkets
               <br></br>
-              <input type="checkbox"></input>
-              Community centers
-              <br></br>
-              <input type="checkbox"></input>
+              <input
+                type="checkbox"
+                checked={this.state.checked}
+                onChange={this.handleCheckboxChange}
+              />
               Schools
               <br></br>
-              <input type="checkbox"></input>
+              <input
+                type="checkbox"
+                checked={this.state.checked}
+                onChange={this.handleCheckboxChange}
+              />
+              Churches
+              <br></br>
+              <input
+                type="checkbox"
+                checked={this.state.checked}
+                onChange={this.handleCheckboxChange}
+              />
+              Community Buildings
+              <br></br>
+              <input
+                type="checkbox"
+                checked={this.state.checked}
+                onChange={this.handleCheckboxChange}
+              />
               Libraries
               <br></br>
-              <input type="checkbox"></input>
-              Daycare
+              <input
+                type="checkbox"
+                checked={this.state.checked}
+                onChange={this.handleCheckboxChange}
+              />
+              Cafe
               <br></br>
-              <input type="checkbox"></input>
-              Other
+              <input
+                type="checkbox"
+                checked={this.state.checked}
+                onChange={this.handleCheckboxChange}
+              />
+              Dance schools
+              <br></br>
+              <input
+                type="checkbox"
+                checked={this.state.checked}
+                onChange={this.handleCheckboxChange}
+              />
+              Gyms
+              <br></br>
+              <input
+                type="checkbox"
+                checked={this.state.checked}
+                onChange={this.handleCheckboxChange}
+              />
+              Swimming pools
+              <br></br>
+              <input
+                type="checkbox"
+                checked={this.state.checked}
+                onChange={this.handleCheckboxChange}
+              />
+              Playgrounds
+              <br></br>
+              <input
+                type="checkbox"
+                checked={this.state.checked}
+                onChange={this.handleParksCheckboxChange}
+              />
+              Parks
               <br></br>
             </div>
             <div>
