@@ -42,6 +42,15 @@ class mainPage extends Component {
   handleParksCheckboxChange = event =>
     this.setState({ checked: event.target.checked });
 
+  // function to be implamented 
+  /**
+   * when button is pressed it will call the function error catch
+   * then based on the resalts will convert state to a JSON then 
+   * send that info to the dack end.
+   * once a respons ie receved send that JSON object to 
+   * the plot function. 
+   */
+
   buttonClick = () => {
 
     this.setState({resaltState: false});
