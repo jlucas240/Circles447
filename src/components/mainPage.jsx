@@ -1,58 +1,26 @@
 import React, { Component } from "react";
 import { Map, GoogleApiWrapper } from "google-maps-react";
+import "./mainPage.css";
 
 class mainPage extends Component {
   state = {
-    titlestyle: {
-      backgroundColor: "MediumSeaGreen",
-      position: "absolute",
-      height: "5%",
-      width: "100%",
-      textAlign: "center",
-      textAlignVertical: "bottom"
-    },
-    bodystyle: {
-      position: "absolute",
-      display: "flex",
-      top: "5%",
-      width: "100%",
-      height: "95%"
-    },
-    mapstyle: {
-      backgroundColor: "red",
-      width: "67%",
-      height: "100%"
-    },
-    optionsstyle: {
-      position: "absolute",
-      zindex: 1,
-      width: "33%",
-      height: "75%",
-      left: "67%",
-      backgroundColor: "white"
-    },
-    menustyle: {
-      backgroundColor: "MediumSeaGreen",
-      position: "right",
-      height: "25px",
-      textAlign: "center"
-    },
-    resaltsstyle: {
-      position: "absolute",
-      zindex: 1,
-      width: "33%",
-      height: "75%",
-      left: "67%",
-      backgroundColor: "white"
-    },
-    map: {
-      height: "100%",
-      width: "67%"
-    }
+    distance: 0,
+    Supermarkets: false,
+    schools: false,
+    churches: false,
+    Community: false,
+    Libraries: false,
+    cafe: false,
+    Dance: false,
+    Gyms: false,
+    Swimming: false,
+    Playgrounds: false,
+    Parks: false,
+    resaltState: false
   };
 
   handleSupermarketsCheckboxChange = event =>
-    this.setState({ checked: event.target.checked });
+    this.setState({ Supermarkets: event.target.checked});
   handleSchoolsCheckboxChange = event =>
     this.setState({ checked: event.target.checked });
   handleChurchesCheckboxChange = event =>
@@ -74,37 +42,28 @@ class mainPage extends Component {
   handleParksCheckboxChange = event =>
     this.setState({ checked: event.target.checked });
 
-  clicked_baby = () => {
-    this.setState({
-      optionsstyle: {
-        position: "absolute",
-        zindex: 1,
-        width: "33%",
-        height: "75%",
-        left: "67%",
-        backgroundColor: "white",
-        display: "none"
-      },
-      resaltsstyle: {
-        position: "absolute",
-        zindex: 2,
-        width: "33%",
-        height: "75%",
-        left: "67%",
-        backgroundColor: "white",
-        display: "inline"
-      }
-    });
+  buttonClick = () => {
+
+    this.setState({resaltState: false});
+
+  };
+
+  optionClick = () =>{
+    
+    if (this.state.resaltState === true){this.setState({resaltState: false})}
+
+    else{this.setState({resaltState: false})};
+
   };
 
   render() {
     return (
       <div>
-        <div style={this.state.titlestyle}>
+        <div className="tittle">
           <font style={{ color: "white" }}>NAME OF WEBPAGE</font>
         </div>
-        <div style={this.state.bodystyle}>
-          <div style={this.state.mapstyle}>
+        <body className="body">
+          <div className="map">
             <Map
               google={this.props.google}
               zoom={8}
@@ -112,8 +71,8 @@ class mainPage extends Component {
               initialCenter={{ lat: 47.444, lng: -122.176 }}
             />
           </div>
-          <div style={this.state.resaltsstyle}>
-            <div style={this.state.menustyle}>
+          <div className="resalt">
+            <div className="menu">
               <view style={{ flex: 1 }}>
                 <text style={{ textAlign: "right" }}>
                   <font style={{ color: "white" }}>Reslats</font>
@@ -122,8 +81,8 @@ class mainPage extends Component {
               <br></br>
             </div>
           </div>
-          <div style={this.state.optionsstyle}>
-            <div style={this.state.menustyle}>
+          <div className="option">
+            <div className="menu" onClick={() => this.optionClick({})}>
               <view style={{ flex: 1 }}>
                 <text style={{ textAlign: "right" }}>
                   <font style={{ color: "white" }}>MENU</font>
@@ -293,7 +252,7 @@ class mainPage extends Component {
             <div>
               <button
                 type="button"
-                onClick={() => this.clicked_baby({})}
+                onClick={() => this.buttonClick({})}
                 style={{
                   backgroundColor: "MediumSeaGreen"
                 }}
@@ -302,12 +261,12 @@ class mainPage extends Component {
               </button>
             </div>
           </div>
-        </div>
+        </body>
       </div>
     );
   }
 }
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyB7pQd3kQPwZXm8n-vRT1YJ37x5ZGkLt0Y"
-})(mainPage);
+  apiKey: "AIzaSyDjxQG1nLTRjlCFbVB4mq_jMtu40GMR5D4"
+})(mainPage); 
 //export default Test69M;

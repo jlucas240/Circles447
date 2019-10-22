@@ -15,6 +15,7 @@
 }
 
 .map {
+  position: absolute;
   background-color: red;
   width: 67%;
   height: 100%;
