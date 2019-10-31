@@ -5,6 +5,7 @@ import "./mainPage.css";
 class mainPage extends Component {
   state = {
     distance: 0,
+    error: false,
     Supermarkets: false,
     schools: false,
     churches: false,
@@ -57,13 +58,36 @@ class mainPage extends Component {
 
   };
 
+  errorButtonClick = () => {
+    this.setState({error: false});
+  }
+
+  errorCheck = () => {
+
+    /*if( === false){
+      this.setState({error: true})
+    }*/
+  };
+
   optionClick = () =>{
     
-    if (this.state.resaltState === true){this.setState({resaltState: false})}
+    if (this.state.resaltState === true){this.setState({resaltState: false});}
 
     else{this.setState({resaltState: false})};
 
   };
+
+  ERROR = () =>{
+    return(
+      <div>
+        ERROR:<br></br>
+        Pleae make sure that all of the search bars are filed <br></br>
+        <button onClick = {this.errorButtonClick}>
+          Okay
+        </button>
+      </div>
+    )
+  }
 
   render() {
     return (
