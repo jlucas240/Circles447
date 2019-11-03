@@ -101,7 +101,7 @@ class mainPage extends Component {
               google={this.props.google}
               zoom={8}
               style={this.state.map}
-              initialCenter={{ lat: 47.444, lng: -122.176 }}
+              initialCenter={{ lat: 37.7510, lng: -97.8220 }}
             />
           </div>
           <div className="resalt">
