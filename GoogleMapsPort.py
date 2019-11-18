@@ -8,12 +8,17 @@ longitude = -76.710840
 radial_dist = 25
 API_base_url = "https://maps.googleapis.com/maps/api/"
 textsearch = "place/textsearch/json?query="
+geocoding = "geocode/json?address="
 #search_term = input("Enter Search Term: ")
 
 #Takes in input json to modify
 #latitude, longitude, radial_dist, and other variables
 radial_dist = state[0]
+#turn address and state into proper format(remove spaces with +)
+#turn state to two letter format(California to CA, Maryland to MD, etc.)
+#Hardcode MD?
 #get longitude and attiude from address
+c = requests.get(API_base_url + geocoding + "1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=" + API_key)
 #state[1] Address
 #state[2] City
 #state[3] State
