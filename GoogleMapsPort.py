@@ -28,12 +28,13 @@ for c in City:
     if (c.isspace()) == True:
         c = "+"
 State = state[3]
-c = requests.get(API_base_url + geocoding + Street + ",+"+ City + ",+" + State + "&key=" + API_key)
+c = requests.get(API_base_url + geocoding + Address + ",+"+ City + ",+" + State + API_key)
 #state[1] Address
 #state[2] City
 #state[3] State
 #state[4] Zip?
-
+latitude = c["results"]["geometry"]["location"]["lat"]
+longitude = c["results"]["geometry"]["location"]["lng"]
 # collect and comine results for each true boolean in state[5] through state[15]
 # 5 Supermarket 
 # 6 School 
@@ -46,9 +47,7 @@ c = requests.get(API_base_url + geocoding + Street + ",+"+ City + ",+" + State +
 # 13 Swimming 
 # 14 Playground 
 # 15 Parks
-r = requests.get(API_base_url + textsearch + "Schools" + "&location=" +
-                 str(latitude) + "," + str(longitude) + "&radius=" + str(radial_dist)
-                 + API_key)
+r = requests.get(API_base_url + textsearch + "Schools" + "&location=" + str(latitude) + "," + str(longitude) + "&radius=" + str(radial_dist) + API_key)
 r = r.json()
 
 #Send and Get Request
