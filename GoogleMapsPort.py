@@ -18,7 +18,17 @@ radial_dist = state[0]
 #turn state to two letter format(California to CA, Maryland to MD, etc.)
 #Hardcode MD?
 #get longitude and attiude from address
-c = requests.get(API_base_url + geocoding + "1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=" + API_key)
+#store address values on server to prevent re-geocoding?
+Address = state[1]
+for c in Address:
+    if (c.isspace()) == True:
+        c = "+"
+City = state[2]
+for c in City:
+    if (c.isspace()) == True:
+        c = "+"
+State = state[3]
+c = requests.get(API_base_url + geocoding + Street + ",+"+ City + ",+" + State + "&key=" + API_key)
 #state[1] Address
 #state[2] City
 #state[3] State
