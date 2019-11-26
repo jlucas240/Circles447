@@ -33,20 +33,41 @@ c = requests.get(API_base_url + geocoding + Address + ",+"+ City + ",+" + State 
 #state[2] City
 #state[3] State
 #state[4] Zip?
+c = c.json()
 latitude = c["results"]["geometry"]["location"]["lat"]
 longitude = c["results"]["geometry"]["location"]["lng"]
 # collect and comine results for each true boolean in state[5] through state[15]
 # 5 Supermarket 
+x = x.json()#this is how I make a json right?
+if (state[5]){
+    s = requests.get(API_base_url + textsearch + "supermarket" + "&location=" + str(latitude) + "," + str(longitude) + "&radius=" + str(radial_dist) + API_key)
+    s = s.json()
+    for i in s["results"]:
+        if(i == "geometry"):
+            x += ["location"]
+        if(i == "name"):
+            x += i
+}
 # 6 School 
+school
 # 7 Churches 
+church
 # 8 Community 
-# 9 Libraries 
-# 10 Cafe 
-# 11 Dance 
+No such type
+# 9 Libraries
+library
+# 10 Cafe
+cafe
+# 11 Dance
+No such type
 # 12 Gyms 
-# 13 Swimming 
-# 14 Playground 
+gym
+# 13 Swimming
+No such type
+# 14 Playground
+No such type
 # 15 Parks
+park
 r = requests.get(API_base_url + textsearch + "Schools" + "&location=" + str(latitude) + "," + str(longitude) + "&radius=" + str(radial_dist) + API_key)
 r = r.json()
 
