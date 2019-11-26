@@ -65,23 +65,23 @@ class mainPage extends Component {
   handleSupermarketsCheckboxChange = event =>
     this.setState({ Supermarkets: event.target.checked});
   handleSchoolsCheckboxChange = event =>
-    this.setState({ schools: event.target.checked });
+    this.setState({ Schools: event.target.checked });
   handleChurchesCheckboxChange = event =>
-    this.setState({ churches: event.target.checked });
+    this.setState({ Churches: event.target.checked });
   handleCommunityCheckboxChange = event =>
-    this.setState({ Community: event.target.checked });
+    this.setState({ communityCenter: event.target.checked });
   handleLibrariesCheckboxChange = event =>
     this.setState({ Libraries: event.target.checked });
   handleCafeCheckboxChange = event =>
-    this.setState({ cafe: event.target.checked });
+    this.setState({ Cafe: event.target.checked });
   handleDanceCheckboxChange = event =>
-    this.setState({ Dance: event.target.checked });
+    this.setState({ danceStudio: event.target.checked });
   handleGymsCheckboxChange = event =>
     this.setState({ Gyms: event.target.checked });
   handleSwimmingCheckboxChange = event =>
-    this.setState({ Swimming: event.target.checked });
+    this.setState({ pool: event.target.checked });
   handlePlaygroundsCheckboxChange = event =>
-    this.setState({ Playgrounds: event.target.checked });
+    this.setState({ playgrounds: event.target.checked });
   handleParksCheckboxChange = event =>
     this.setState({ Parks: event.target.checked });
 
@@ -97,9 +97,6 @@ class mainPage extends Component {
     };
     handleChangeCity = e => {
       this.setState({ city: e.target.value });
-    };
-    handleChangeZip = e => {
-      this.setState({ zipcode: e.target.value });
     };
     handleDistanceChange = e =>{
       this.setState({ distance: e.target.value });
@@ -155,9 +152,6 @@ class mainPage extends Component {
   errorCheck = () => {
 
     if( this.state.address === ""){
-      this.setState({error: true})
-    }
-    else if( this.state.zipcode === ""){
       this.setState({error: true})
     }
     else if( this.state.state === "" || this.state.state === "select one"){
@@ -265,7 +259,7 @@ class mainPage extends Component {
               </view>
               <br></br>
             </div>
-            enter address or zip
+            enter address
             <br></br>
               address and street:
               <input type="text"
@@ -335,12 +329,6 @@ class mainPage extends Component {
               name="fname"
               value={this.state.city}
               onChange={this.handleChangeCity}></input>
-            <br></br>
-            zipcode:
-            <input type="text"
-              name="fname"
-              value={this.state.zipcode}
-              onChange={this.handleChangeZip}></input>
             <br></br>
             <div class="slidecontainer">
               distance:
