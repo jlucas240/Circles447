@@ -1,110 +1,244 @@
 import React, { Component } from "react";
-import { Map, GoogleApiWrapper } from "google-maps-react";
+import { Map, GoogleApiWrapper, Marker, mapStyles } from "google-maps-react";
 import "./mainPage.css";
+
 
 class mainPage extends Component {
   state = {
-    distance: 0,
-    error: false,
+    distance: 15,
+    address: '',
+    city: '',
+    state: '',
     Supermarkets: false,
-    schools: false,
-    churches: false,
-    Community: false,
+    Schools: false,
+    Churches: false,
+    communityCenter: false,
     Libraries: false,
-    cafe: false,
-    Dance: false,
+    Cafe: false,
+    danceStudio: false,
     Gyms: false,
-    Swimming: false,
-    Playgrounds: false,
+    pool: false,
+    playgrounds: false,
     Parks: false,
-    resaltState: false
+    resaltState: false,
+    error: false,
+    x: 0,
+    y: 0,
+    hold: null
   };
+
+  props = {
+    x: 0,
+    y: 0
+  }
+
+  hold = {
+    place1: {lat: 40,
+             lng: 40},
+    place2: {lat: 41,
+             lng: 40},
+
+  }
+
+  test = () => {
+    var API_key = "&key=AIzaSyDjxQG1nLTRjlCFbVB4mq_jMtu40GMR5D4";
+    var lol;
+    fetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=pool&keyword=cruise&key=AIzaSyDjxQG1nLTRjlCFbVB4mq_jMtu40GMR5D4")
+      .then(res => res.json())
+      .then(
+      (result) => {
+        lol = result;
+
+        this.setState({
+          hold: JSON.stringify(result)
+        });
+      },
+      (error) => {
+        this.setState({
+          hold: ""
+          
+        });
+      }
+    )
+  }
 
   handleSupermarketsCheckboxChange = event =>
     this.setState({ Supermarkets: event.target.checked});
   handleSchoolsCheckboxChange = event =>
-    this.setState({ checked: event.target.checked });
+    this.setState({ schools: event.target.checked });
   handleChurchesCheckboxChange = event =>
-    this.setState({ checked: event.target.checked });
+    this.setState({ churches: event.target.checked });
   handleCommunityCheckboxChange = event =>
-    this.setState({ checked: event.target.checked });
+    this.setState({ Community: event.target.checked });
   handleLibrariesCheckboxChange = event =>
-    this.setState({ checked: event.target.checked });
+    this.setState({ Libraries: event.target.checked });
   handleCafeCheckboxChange = event =>
-    this.setState({ checked: event.target.checked });
+    this.setState({ cafe: event.target.checked });
   handleDanceCheckboxChange = event =>
-    this.setState({ checked: event.target.checked });
+    this.setState({ Dance: event.target.checked });
   handleGymsCheckboxChange = event =>
-    this.setState({ checked: event.target.checked });
+    this.setState({ Gyms: event.target.checked });
   handleSwimmingCheckboxChange = event =>
-    this.setState({ checked: event.target.checked });
+    this.setState({ Swimming: event.target.checked });
   handlePlaygroundsCheckboxChange = event =>
-    this.setState({ checked: event.target.checked });
+    this.setState({ Playgrounds: event.target.checked });
   handleParksCheckboxChange = event =>
-    this.setState({ checked: event.target.checked });
+    this.setState({ Parks: event.target.checked });
+
+    
+    handleChangeAddress = e => {
+      this.setState({ address: e.target.value });
+    };
+    handleChangeState = e => {
+      this.setState({ state: e.target.value });
+    };
+    handleChangeStreet = e => {
+      this.setState({ street: e.target.value });
+    };
+    handleChangeCity = e => {
+      this.setState({ city: e.target.value });
+    };
+    handleChangeZip = e => {
+      this.setState({ zipcode: e.target.value });
+    };
+    handleDistanceChange = e =>{
+      this.setState({ distance: e.target.value });
+    }
+
 
   // function to be implamented 
   /**
-   * when button is pressed it will call the function error catch
+   * when button is pressed it will call the function errorCheck.
+   * error check will determin if there iis an error or not if there is an error this.state.error will be true. else false
    * then based on the resalts will convert state to a JSON then 
    * send that info to the dack end.
-   * once a respons ie receved send that JSON object to 
-   * the plot function. 
+   *      this will be done through an ajax call react uses the fetch function as an ajax comand.
+   * once a respons is receved send that JSON object to the plot function. 
    */
 
   buttonClick = () => {
 
-    this.setState({resaltState: false});
+    var res;
+
+      fetch("http://71.166.53.242/Circles447/build/GoogleMapsPort.py?state")
+      .then(result => res)
+      .then(
+
+
+      ),
+      error(
+        
+      )
+
+
+
+
+
+
+
+
+
+
+
+
+    this.errorCheck();
+    this.setState({resaltState: true});
+    
 
   };
 
   errorButtonClick = () => {
     this.setState({error: false});
+    this.setState({resaltState: false});
   }
 
   errorCheck = () => {
 
-    /*if( === false){
+    if( this.state.address === ""){
       this.setState({error: true})
-    }*/
+    }
+    else if( this.state.zipcode === ""){
+      this.setState({error: true})
+    }
+    else if( this.state.state === "" || this.state.state === "select one"){
+      this.setState({error: true})
+    }
+    else if( this.state.city === ""){
+      this.setState({error: true})
+    }
   };
 
   optionClick = () =>{
     
     if (this.state.resaltState === true){this.setState({resaltState: false});}
 
-    else{this.setState({resaltState: false})};
+    else{this.setState({resaltState: true})};
 
   };
 
-  ERROR = () =>{
-    return(
-      <div>
-        ERROR:<br></br>
-        Pleae make sure that all of the search bars are filed <br></br>
-        <button onClick = {this.errorButtonClick}>
-          Okay
-        </button>
-      </div>
-    )
+  resultClick = () =>{
+    
+    if (this.state.resaltState === true){this.setState({resaltState: true});}
+
+    else{this.setState({resaltState: true})};
+
+  };
+
+  plot = (x) =>{
+
+    
+    return null;
   }
 
-  render() {
-    return (
-      <div>
-        <div className="tittle">
-          <font style={{ color: "white" }}>NAME OF WEBPAGE</font>
-        </div>
-        <body className="body">
-          <div className="map">
-            <Map
-              google={this.props.google}
-              zoom={8}
-              style={this.state.map}
-              initialCenter={{ lat: 37.7510, lng: -97.8220 }}
-            />
-          </div>
-          <div className="resalt">
+  mapPoint = () =>{
+
+    return(
+
+      <Map
+        google={this.props.google}
+        zoom={4}
+        style={this.state.map}
+        initialCenter={{ lat: this.state.x, lng: this.state.y }}
+      >
+        
+      </Map>
+    );
+  }
+
+  Error = () =>{
+    var hold1 = this.state.hold;
+    return(
+      <div className="error">
+        ERROR:<br></br>
+                Pleae make sure that all text areas are filed <br></br>
+          <button onClick = {this.errorButtonClick}>
+          Okay
+        </button>
+        <button onClick = {this.test}>
+          test
+        </button>
+        <br></br>
+        data: {hold1}
+      </div>
+    );
+  }
+
+  
+
+  Resalts = () =>{
+    return(
+      
+      <div className="option">
+            <div className="menu" onClick={() => this.optionClick({})}>
+              <view style={{ flex: 1 }}>
+                <text style={{ textAlign: "right" }}>
+                  <font style={{ color: "white" }}>Options</font>
+                </text>
+              </view>
+              <br></br>
+            </div>
+            <div/>
+      <div className="resalt" onClick={() => this.resultClick({})}>
             <div className="menu">
               <view style={{ flex: 1 }}>
                 <text style={{ textAlign: "right" }}>
@@ -114,24 +248,34 @@ class mainPage extends Component {
               <br></br>
             </div>
           </div>
-          <div className="option">
+          </div>
+    );
+    
+  }
+
+  Options = () =>{
+    var dis = this.state.distance;
+    return(
+      <div className="option">
             <div className="menu" onClick={() => this.optionClick({})}>
               <view style={{ flex: 1 }}>
                 <text style={{ textAlign: "right" }}>
-                  <font style={{ color: "white" }}>MENU</font>
+                  <font style={{ color: "white" }}>Options</font>
                 </text>
               </view>
               <br></br>
             </div>
             enter address or zip
-            <form action="/action_page.php">
-              address and streat:
-              <input type="text" name="fname"></input>
-              <br></br>
-            </form>
+            <br></br>
+              address and street:
+              <input type="text"
+              name="fname"
+              value={this.state.address}
+              onChange={this.handleChangeAddress}></input>
+            <br></br>
             state:
-            <select>
-              <option selected value="grapefruit">
+            <select value={this.state.state} onChange={this.handleChangeState}>
+              <option selected >
                 select one
               </option>
               <option value="AL">Alabama</option>
@@ -187,19 +331,30 @@ class mainPage extends Component {
               <option value="WY">Wyoming</option>
             </select>
             city:
-            <input type="text" name="fname"></input>
+            <input type="text"
+              name="fname"
+              value={this.state.city}
+              onChange={this.handleChangeCity}></input>
             <br></br>
             zipcode:
-            <input type="text" name="fname"></input>
+            <input type="text"
+              name="fname"
+              value={this.state.zipcode}
+              onChange={this.handleChangeZip}></input>
             <br></br>
-            <div>
+            <div class="slidecontainer">
               distance:
               <input
-                type="range"
-                min="1"
-                max="25"
-                style={{ height: "25px", verticalAlign: "middle" }}
+               type="range" 
+               min="1" 
+               max="50" 
+               value={this.state.distance}
+               onChange= {this.handleDistanceChange}
+               class="slider" 
+               id="myRange"
               ></input>
+              <br></br>
+              The current distence is {dis} miles
             </div>
             options: <br></br>
             <div>
@@ -292,9 +447,37 @@ class mainPage extends Component {
               >
                 search
               </button>
+              <div className="resalt" onClick={() => this.resultClick({})}>
+            <div className="menu1">
+              <view style={{ flex: 1 }}>
+                <text style={{ textAlign: "right" }}>
+                  <font style={{ color: "white" }}>Reslats</font>
+                </text>
+              </view>
+              <br></br>
             </div>
           </div>
+            </div>
+          </div>
+    );
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="tittle">
+          <font style={{ color: "white" }}>NAME OF WEBPAGE</font>
+        </div>
+        {this.state.error ? <this.Error /> :
+        <body className="body">
+
+          <div className="map">
+            <this.mapPoint
+            />
+          </div>
+          {this.state.resaltState ? <this.Resalts /> : <this.Options/>}
         </body>
+        }
       </div>
     );
   }
@@ -303,3 +486,21 @@ export default GoogleApiWrapper({
   apiKey: "AIzaSyDjxQG1nLTRjlCFbVB4mq_jMtu40GMR5D4"
 })(mainPage); 
 //export default Test69M;
+
+class Mapstuff extends Component {
+
+  render(){
+    return(
+      <Map
+      google={this.props.google}
+      zoom={4}
+      style={mapStyles}
+      initialCenter={{ lat: 0, lng: 0 }}
+    >
+    </Map>
+  );
+  }
+
+}
+
+
