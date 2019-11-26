@@ -39,7 +39,7 @@ longitude = c["results"]["geometry"]["location"]["lng"]
 # collect and comine results for each true boolean in state[5] through state[15]
 # 5 Supermarket 
 x = x.json()#this is how I make a json right?
-if (state[5]){
+if (state[5]):
     s = requests.get(API_base_url + textsearch + "supermarket" + "&location=" + str(latitude) + "," + str(longitude) + "&radius=" + str(radial_dist) + API_key)
     s = s.json()
     for i in s["results"]:
@@ -47,27 +47,27 @@ if (state[5]){
             x += ["location"]
         if(i == "name"):
             x += i
-}
+
 # 6 School 
-school
+"school"
 # 7 Churches 
-church
+"church"
 # 8 Community 
-No such type
+"community"
 # 9 Libraries
-library
+"library"
 # 10 Cafe
-cafe
+"cafe"
 # 11 Dance
-No such type
+"dance school"
 # 12 Gyms 
-gym
+"gym"
 # 13 Swimming
-No such type
+"pool"
 # 14 Playground
-No such type
+"playground"
 # 15 Parks
-park
+"park"
 r = requests.get(API_base_url + textsearch + "Schools" + "&location=" + str(latitude) + "," + str(longitude) + "&radius=" + str(radial_dist) + API_key)
 r = r.json()
 
