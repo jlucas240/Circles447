@@ -49,8 +49,14 @@ if (state[5]):
     searchLng = ''
     searchName = ''
     #Navigate dictionary
-    #for each result add the lat and long 
-    #and name to a dictionary as an entry
+    #for each result
+    for i in searchData
+        searchLat = ["geomtry"]["location"]["lat"]
+        searchLng = ["geomtry"]["location"]["lng"]
+        searchName = ["name"]
+        # add the lat and long 
+        # and name to a dictionary
+        # as an entry to data
 
 
 # 6 School 
