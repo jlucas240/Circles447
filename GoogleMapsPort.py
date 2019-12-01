@@ -1,6 +1,9 @@
 #!C:/Users/Jon/AppData/Local/Programs/Python/Python37-32/python.exe
 import json
 import requests
+import sys
+
+state = sys.argv[1]
 
 API_key = "&key=AIzaSyDjxQG1nLTRjlCFbVB4mq_jMtu40GMR5D4"
 latitude = 39.254750
@@ -28,25 +31,27 @@ for c in City:
     if (c.isspace()) == True:
         c = "+"
 State = state[3]
-c = requests.get(API_base_url + geocoding + Address + ",+"+ City + ",+" + State + API_key)
+coords = requests.get(API_base_url + geocoding + Address + ",+"+ City + ",+" + State + API_key)
 #state[1] Address
 #state[2] City
 #state[3] State
 #state[4] Zip?
-c = c.json()
-latitude = c["results"]["geometry"]["location"]["lat"]
-longitude = c["results"]["geometry"]["location"]["lng"]
+coordsData = json.loads(coords.text)
+latitude = coordsData['results']['geometry']['location']['lat']
+longitude = coordsData['results']['geometry']['location']['lng']
 # collect and comine results for each true boolean in state[5] through state[15]
 # 5 Supermarket 
-x = x.json()#this is how I make a json right?
+data = {}
 if (state[5]):
-    s = requests.get(API_base_url + textsearch + "supermarket" + "&location=" + str(latitude) + "," + str(longitude) + "&radius=" + str(radial_dist) + API_key)
-    s = s.json()
-    for i in s["results"]:
-        if(i == "geometry"):
-            x += ["location"]
-        if(i == "name"):
-            x += i
+    search = requests.get(API_base_url + textsearch + "supermarket" + "&location=" + str(latitude) + "," + str(longitude) + "&radius=" + str(radial_dist) + API_key)
+    searchData = json.loads(search.text)
+    searchLat = ''
+    searchLng = ''
+    searchName = ''
+    #Navigate dictionary
+    #for each result add the lat and long 
+    #and name to a dictionary as an entry
+
 
 # 6 School 
 "school"
