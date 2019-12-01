@@ -79,6 +79,12 @@ if (state[5]):
 "playground"
 # 15 Parks
 "park"
+
+dataJson = json.dumps(data)
+
+return dataJson
+
+#example work
 r = requests.get(API_base_url + textsearch + "Schools" + "&location=" + str(latitude) + "," + str(longitude) + "&radius=" + str(radial_dist) + API_key)
 r = r.json()
 
