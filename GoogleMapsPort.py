@@ -233,13 +233,13 @@ dataJson = json.dumps(data)
 return dataJson
 
 #example work
-r = requests.get(API_base_url + textsearch + "Schools" + "&location=" + str(latitude) + "," + str(longitude) + "&radius=" + str(radial_dist) + API_key)
-r = r.json()
+#r = requests.get(API_base_url + textsearch + "Schools" + "&location=" + str(latitude) + "," + str(longitude) + "&radius=" + str(radial_dist) + API_key)
+#r = r.json()
 
 #Send and Get Request
 
-print("content-type: text/html\n\n" )
-for i in r["results"]:
-    print("<br><B>"+i["name"]+"</B>")
+#print("content-type: text/html\n\n" )
+#for i in r["results"]:
+#    print("<br><B>"+i["name"]+"</B>")
 
 #Return json
