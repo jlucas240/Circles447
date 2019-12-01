@@ -47,7 +47,7 @@ if (state[5]):
     searchData = json.loads(search.text)
     #Navigate dictionary
     #for each result
-    for i in searchData[results]:
+    for i in searchData["results"]:
         searchLat = i["geometry"]["location"]["lat"]
         searchLng = i["geometry"]["location"]["lng"]
         searchPlace = i["place_id"]
