@@ -40,8 +40,9 @@ coordsData = json.loads(coords.text)
 latitude = coordsData['results']['geometry']['location']['lat']
 longitude = coordsData['results']['geometry']['location']['lng']
 # collect and comine results for each true boolean in state[5] through state[15]
+
 # 5 Supermarket 
-data = {}
+data = {'results':[]}
 if (state[5]):
     search = requests.get(API_base_url + textsearch + "supermarket" + "&location=" + str(latitude) + "," + str(longitude) + "&radius=" + str(radial_dist) + API_key)
     searchData = json.loads(search.text)
@@ -54,28 +55,178 @@ if (state[5]):
         searchIcon = i["icon"]
         searchName = i["name"]
         # add all variables as dictionary entry
-
+        d = {'latitude': searchLat, 'longitude': searchLng, 'place_id': searchPlace, 'icon': searchIcon, 'name': searchName}
+        data['results'].append(d)
 
 # 6 School 
-"school"
+
+if (state[5]):
+    search = requests.get(API_base_url + textsearch + "school" + "&location=" + str(latitude) + "," + str(longitude) + "&radius=" + str(radial_dist) + API_key)
+    searchData = json.loads(search.text)
+    #Navigate dictionary
+    #for each result
+    for i in searchData["results"]:
+        searchLat = i["geometry"]["location"]["lat"]
+        searchLng = i["geometry"]["location"]["lng"]
+        searchPlace = i["place_id"]
+        searchIcon = i["icon"]
+        searchName = i["name"]
+        # add all variables as dictionary entry
+        d = {'latitude': searchLat, 'longitude': searchLng, 'place_id': searchPlace, 'icon': searchIcon, 'name': searchName}
+        data['results'].append(d)
+
 # 7 Churches 
-"church"
+
+if (state[5]):
+    search = requests.get(API_base_url + textsearch + "church" + "&location=" + str(latitude) + "," + str(longitude) + "&radius=" + str(radial_dist) + API_key)
+    searchData = json.loads(search.text)
+    #Navigate dictionary
+    #for each result
+    for i in searchData["results"]:
+        searchLat = i["geometry"]["location"]["lat"]
+        searchLng = i["geometry"]["location"]["lng"]
+        searchPlace = i["place_id"]
+        searchIcon = i["icon"]
+        searchName = i["name"]
+        # add all variables as dictionary entry
+        d = {'latitude': searchLat, 'longitude': searchLng, 'place_id': searchPlace, 'icon': searchIcon, 'name': searchName}
+        data['results'].append(d)
+
 # 8 Community 
-"community"
+
+if (state[5]):
+    search = requests.get(API_base_url + textsearch + "community" + "&location=" + str(latitude) + "," + str(longitude) + "&radius=" + str(radial_dist) + API_key)
+    searchData = json.loads(search.text)
+    #Navigate dictionary
+    #for each result
+    for i in searchData["results"]:
+        searchLat = i["geometry"]["location"]["lat"]
+        searchLng = i["geometry"]["location"]["lng"]
+        searchPlace = i["place_id"]
+        searchIcon = i["icon"]
+        searchName = i["name"]
+        # add all variables as dictionary entry
+        d = {'latitude': searchLat, 'longitude': searchLng, 'place_id': searchPlace, 'icon': searchIcon, 'name': searchName}
+        data['results'].append(d)
+
 # 9 Libraries
-"library"
+
+if (state[5]):
+    search = requests.get(API_base_url + textsearch + "library" + "&location=" + str(latitude) + "," + str(longitude) + "&radius=" + str(radial_dist) + API_key)
+    searchData = json.loads(search.text)
+    #Navigate dictionary
+    #for each result
+    for i in searchData["results"]:
+        searchLat = i["geometry"]["location"]["lat"]
+        searchLng = i["geometry"]["location"]["lng"]
+        searchPlace = i["place_id"]
+        searchIcon = i["icon"]
+        searchName = i["name"]
+        # add all variables as dictionary entry
+        d = {'latitude': searchLat, 'longitude': searchLng, 'place_id': searchPlace, 'icon': searchIcon, 'name': searchName}
+        data['results'].append(d)
+
 # 10 Cafe
-"cafe"
+
+if (state[5]):
+    search = requests.get(API_base_url + textsearch + "cafe" + "&location=" + str(latitude) + "," + str(longitude) + "&radius=" + str(radial_dist) + API_key)
+    searchData = json.loads(search.text)
+    #Navigate dictionary
+    #for each result
+    for i in searchData["results"]:
+        searchLat = i["geometry"]["location"]["lat"]
+        searchLng = i["geometry"]["location"]["lng"]
+        searchPlace = i["place_id"]
+        searchIcon = i["icon"]
+        searchName = i["name"]
+        # add all variables as dictionary entry
+        d = {'latitude': searchLat, 'longitude': searchLng, 'place_id': searchPlace, 'icon': searchIcon, 'name': searchName}
+        data['results'].append(d)
+
 # 11 Dance
-"dance school"
+
+if (state[5]):
+    search = requests.get(API_base_url + textsearch + "dance school"+ "&location=" + str(latitude) + "," + str(longitude) + "&radius=" + str(radial_dist) + API_key)
+    searchData = json.loads(search.text)
+    #Navigate dictionary
+    #for each result
+    for i in searchData["results"]:
+        searchLat = i["geometry"]["location"]["lat"]
+        searchLng = i["geometry"]["location"]["lng"]
+        searchPlace = i["place_id"]
+        searchIcon = i["icon"]
+        searchName = i["name"]
+        # add all variables as dictionary entry
+        d = {'latitude': searchLat, 'longitude': searchLng, 'place_id': searchPlace, 'icon': searchIcon, 'name': searchName}
+        data['results'].append(d)
+
 # 12 Gyms 
-"gym"
+
+if (state[5]):
+    search = requests.get(API_base_url + textsearch + "gym" + "&location=" + str(latitude) + "," + str(longitude) + "&radius=" + str(radial_dist) + API_key)
+    searchData = json.loads(search.text)
+    #Navigate dictionary
+    #for each result
+    for i in searchData["results"]:
+        searchLat = i["geometry"]["location"]["lat"]
+        searchLng = i["geometry"]["location"]["lng"]
+        searchPlace = i["place_id"]
+        searchIcon = i["icon"]
+        searchName = i["name"]
+        # add all variables as dictionary entry
+        d = {'latitude': searchLat, 'longitude': searchLng, 'place_id': searchPlace, 'icon': searchIcon, 'name': searchName}
+        data['results'].append(d)
+
 # 13 Swimming
-"pool"
+if (state[5]):
+    search = requests.get(API_base_url + textsearch + "pool" + "&location=" + str(latitude) + "," + str(longitude) + "&radius=" + str(radial_dist) + API_key)
+    searchData = json.loads(search.text)
+    #Navigate dictionary
+    #for each result
+    for i in searchData["results"]:
+        searchLat = i["geometry"]["location"]["lat"]
+        searchLng = i["geometry"]["location"]["lng"]
+        searchPlace = i["place_id"]
+        searchIcon = i["icon"]
+        searchName = i["name"]
+        # add all variables as dictionary entry
+        d = {'latitude': searchLat, 'longitude': searchLng, 'place_id': searchPlace, 'icon': searchIcon, 'name': searchName}
+        data['results'].append(d)
+
 # 14 Playground
-"playground"
+
+if (state[5]):
+    search = requests.get(API_base_url + textsearch + "playground" + "&location=" + str(latitude) + "," + str(longitude) + "&radius=" + str(radial_dist) + API_key)
+    searchData = json.loads(search.text)
+    #Navigate dictionary
+    #for each result
+    for i in searchData["results"]:
+        searchLat = i["geometry"]["location"]["lat"]
+        searchLng = i["geometry"]["location"]["lng"]
+        searchPlace = i["place_id"]
+        searchIcon = i["icon"]
+        searchName = i["name"]
+        # add all variables as dictionary entry
+        d = {'latitude': searchLat, 'longitude': searchLng, 'place_id': searchPlace, 'icon': searchIcon, 'name': searchName}
+        data['results'].append(d)
+
 # 15 Parks
-"park"
+
+if (state[5]):
+    search = requests.get(API_base_url + textsearch + "park" + "&location=" + str(latitude) + "," + str(longitude) + "&radius=" + str(radial_dist) + API_key)
+    searchData = json.loads(search.text)
+    #Navigate dictionary
+    #for each result
+    for i in searchData["results"]:
+        searchLat = i["geometry"]["location"]["lat"]
+        searchLng = i["geometry"]["location"]["lng"]
+        searchPlace = i["place_id"]
+        searchIcon = i["icon"]
+        searchName = i["name"]
+        # add all variables as dictionary entry
+        d = {'latitude': searchLat, 'longitude': searchLng, 'place_id': searchPlace, 'icon': searchIcon, 'name': searchName}
+        data['results'].append(d)
+
 
 dataJson = json.dumps(data)
 
