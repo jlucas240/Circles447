@@ -45,18 +45,15 @@ data = {}
 if (state[5]):
     search = requests.get(API_base_url + textsearch + "supermarket" + "&location=" + str(latitude) + "," + str(longitude) + "&radius=" + str(radial_dist) + API_key)
     searchData = json.loads(search.text)
-    searchLat = ''
-    searchLng = ''
-    searchName = ''
     #Navigate dictionary
     #for each result
-    for i in searchData
-        searchLat = ["geomtry"]["location"]["lat"]
-        searchLng = ["geomtry"]["location"]["lng"]
+    for i in searchData:
+        searchLat = ["geometry"]["location"]["lat"]
+        searchLng = ["geometry"]["location"]["lng"]
+        searchPlace = ["place_id"]
+        searchIcon = ["icon"]
         searchName = ["name"]
-        # add the lat and long 
-        # and name to a dictionary
-        # as an entry to data
+        # add all variables as dictionary entry
 
 
 # 6 School 
