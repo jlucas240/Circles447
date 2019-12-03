@@ -6,9 +6,9 @@ import sys
 state = sys.argv[1]
 
 API_key = "&key=AIzaSyDjxQG1nLTRjlCFbVB4mq_jMtu40GMR5D4"
-latitude = 39.254750
-longitude = -76.710840
-radial_dist = 25
+#latitude = 39.254750
+#longitude = -76.710840
+#radial_dist = 25
 API_base_url = "https://maps.googleapis.com/maps/api/"
 textsearch = "place/textsearch/json?query="
 geocoding = "geocode/json?address="
@@ -24,11 +24,11 @@ radial_dist = state[0]
 #store address values on server to prevent re-geocoding?
 Address = state[1]
 for c in Address:
-    if (c.isspace()) == True:
+    if (c.isspace() == True):
         c = "+"
 City = state[2]
 for c in City:
-    if (c.isspace()) == True:
+    if (c.isspace() == True):
         c = "+"
 State = state[3]
 coords = requests.get(API_base_url + geocoding + Address + ",+"+ City + ",+" + State + API_key)
@@ -39,7 +39,7 @@ coords = requests.get(API_base_url + geocoding + Address + ",+"+ City + ",+" + S
 coordsData = json.loads(coords.text)
 latitude = coordsData['results']['geometry']['location']['lat']
 longitude = coordsData['results']['geometry']['location']['lng']
-# collect and comine results for each true boolean in state[5] through state[15]
+# collect and combine results for each true boolean in state[5] through state[15]
 
 # 5 Supermarket 
 data = {'results':[]}

@@ -39,7 +39,7 @@ class mainPage extends Component {
              lng: 40},
 
   }
-
+/*
   test = () => {
     var API_key = "&key=AIzaSyDjxQG1nLTRjlCFbVB4mq_jMtu40GMR5D4";
     var lol;
@@ -61,7 +61,7 @@ class mainPage extends Component {
       }
     )
   }
-
+*/
   handleSupermarketsCheckboxChange = event =>
     this.setState({ Supermarkets: event.target.checked});
   handleSchoolsCheckboxChange = event =>
@@ -236,7 +236,7 @@ class mainPage extends Component {
             <div className="menu">
               <view style={{ flex: 1 }}>
                 <text style={{ textAlign: "right" }}>
-                  <font style={{ color: "white" }}>Reslats</font>
+                  <font style={{ color: "white" }}>Results</font>
                 </text>
               </view>
               <br></br>
